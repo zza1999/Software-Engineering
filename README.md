@@ -8,22 +8,22 @@ BUPT SE coursework 310c
 - [@张涛](https://github.com/zt2298585463)
 
 
-##参考资料
+## 参考资料
 https://zhuanlan.zhihu.com/p/111742189
 https://www.jianshu.com/p/7b7cf1aeed9e
 
-##开发环境
+## 开发环境
 1. 后端：pycharm
 2. 前端：vscode
 3. 数据库：mysql，已部署在服务器上
 
-##后端
+## 后端
 1. pip安装django、pymysql（连接数据库）、djangorestframework（前后端通信）
 2. shell打开到Software-Engineering/backend文件夹下
 3. 执行python manage.py runserver，无报错，显示网页8000端口
 4. 连接的数据库为mysql，有关信息（用户名密码）在backend/settings.py中的DATABASES变量中
 
-##前端
+## 前端
 1. 安装npm
 2. shell打开到frontend文件夹下
 3. 执行npm i，无报错
