@@ -1,0 +1,38 @@
+.header-style {
+    height     : 64px;
+    align-items: center;
+    box-shadow : 0px 10px 10px -10px #f0f1f2;
+}
+
+.title-style {
+    height         : 64px;
+    padding-left   : 40px;
+    overflow       : hidden;
+    color          : rgba(0, 0, 0, .85);
+    font-size      : 18px;
+    font-family    : Avenir, -apple-system, BlinkMacSystemFont, segoe ui, Roboto, helvetica neue, Arial, noto sans, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol, noto color emoji, sans-serif;
+    line-height    : 64px;
+    white-space    : nowrap;
+    text-decoration: none;
+}
+
+.img-icon-style {
+    position    : relative;
+    top         : -1.5px;
+    height      : 32px;
+    margin-right: 16px;
+}
+
+.menu-item-style {
+    min-width: 72px;
+    height: 64px;
+    line-height: 60px;
+}
+
+.github-icon-style {
+    height: auto;
+    padding: 1px 4px;
+    background: 0 0;
+    border: 0;
+    color: black;
+}
