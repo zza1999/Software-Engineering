@@ -61,6 +61,7 @@ class RoutePage extends React.Component {
                             href="https://github.com/zza1999/Software-Engineering"
                             className="github-icon-style"
                             target="_blank"
+                            rel="noopener noreferrer"
                         >
                             <GithubOutlined style={{ fontSize: 20 }} />
                         </a>
