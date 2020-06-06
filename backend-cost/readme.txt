@@ -1,2 +1,0 @@
-Customer.py中的get_temp_cost函数用来计算费用并储存到数据库中
-class.html是测试时用的前端界面
