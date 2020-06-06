@@ -1,0 +1,11 @@
+.HomePage {
+    text-align: center;
+    padding-top: 200px;
+}
+
+.button-style {
+    font-size: large;
+    margin: 50px;
+    width : 200px;
+    height: 100px;
+}
