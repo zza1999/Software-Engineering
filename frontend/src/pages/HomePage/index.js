@@ -34,10 +34,31 @@ class HomePage extends React.Component {
 	render() {
 		return (
 			<div className="HomePage">
-				<Button onClick={this.handleChangePage.bind(this, "customer")}>顾客界面</Button>
-				<Button onClick={this.handleChangePage.bind(this, "administrator")}>管理员界面</Button>
-				<Button onClick={this.handleChangePage.bind(this, "reception")}>前台界面</Button>
-				<Button onClick={this.handleChangePage.bind(this, "manager")}>经理界面</Button>
+				<h1>酒 店空调管理系统</h1>
+				<Button
+					className="button-style"
+					onClick={this.handleChangePage.bind(this, "customer")}
+				>
+					顾客界面
+				</Button>
+				<Button
+					className="button-style"
+					onClick={this.handleChangePage.bind(this, "administrator")}
+				>
+					管理员界面
+				</Button>
+				<Button
+					className="button-style"
+					onClick={this.handleChangePage.bind(this, "reception")}
+				>
+					前台界面
+				</Button>
+				<Button
+					className="button-style"
+					onClick={this.handleChangePage.bind(this, "manager")}
+				>
+					经理界面
+				</Button>
 			</div>
 		);
 	}
