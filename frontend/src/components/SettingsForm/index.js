@@ -33,6 +33,19 @@ class SettingsForm extends React.Component {
         this.props.changeStateMode('start');
     };
 
+    // ○ mode：0为冷模式，1为暖模式
+	// ○ top_temp：最高温度，float
+	// ○ bottom_temp：最低温度，float
+	// ○ default_temp：房间初始的目标温度，float
+	// ○ default_speed：房间的初始的目标风速，0为低速，1为中速，2为高速
+	// ○ high_rate：高速风费率，float
+	// ○ mid_rate：中速风费率，float
+	// ○ low_rate：低速风费率，float
+    // ○ room_num：房间数，int
+    
+	// ○ allow_num：可被调度的房间数，int
+
+
     render() {
 
         return (
