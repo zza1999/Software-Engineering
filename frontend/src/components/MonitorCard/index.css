@@ -1,0 +1,14 @@
+.button-style {
+    text-align: right;
+}
+
+.statistic-style {
+    display     : inline-block;
+    margin-left : 20px;
+    margin-right: 20px;
+}
+
+.empty-style {
+    margin-top   : 17px;
+    margin-bottom: 17px;
+}

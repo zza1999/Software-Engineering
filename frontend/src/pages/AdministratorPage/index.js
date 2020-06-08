@@ -52,7 +52,7 @@ class AdministratorPage extends React.Component {
 		return (
 			<Row >
 				<Col span={2}></Col>
-				<Col span={20} className={isWorking && state_mode !== 'start' ? "col-on-style" : "col-off-style"}>
+				<Col span={20} className={isWorking && state_mode !== 'start' ? "cols-on-style" : "cols-off-style"}>
 					{
 						isWorking === false ?
 							<Button onClick={this.handlePowerOn} >中央空调开机</Button> :
