@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col, Button, Select, Space, notification } from 'antd';
-import CustomerCard from '../../components/CustomerCard.js';
+import CustomerCard from '../../components/CustomerCard';
 import './index.css';
 
 const { Option } = Select;
