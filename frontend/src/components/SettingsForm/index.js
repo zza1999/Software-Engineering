@@ -4,19 +4,20 @@ import './index.css';
 
 const layout = {
     labelCol: {
-        span: 8,
+        span: 4,
     },
     wrapperCol: {
-        span: 16,
-    },
-};
-const tailLayout = {
-    wrapperCol: {
-        offset: 8,
-        span: 16,
+        span: 15,
     },
 };
 
+const tailLayout = {
+    wrapperCol: {
+        offset: 5,
+        span: 12,
+        span: 12,
+    },
+};
 
 class SettingsForm extends React.Component {
     formRef = React.createRef();
@@ -63,14 +64,14 @@ class SettingsForm extends React.Component {
                                         },
                                     ]}
                                 >
-                                    <Input />
+                                    <Input style={{ maxWidth: 100 }} />
                                 </Form.Item>
                             ) : null
                         }
                     </Form.Item>
-                    <Form.Item {...tailLayout}>
+                    <Form.Item  {...tailLayout}>
                         <Button type="primary" htmlType="submit">
-                            Submit
+                            提交设置
                         </Button>
                     </Form.Item>
                 </Form>
