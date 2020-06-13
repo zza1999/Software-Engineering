@@ -177,6 +177,7 @@ class CustomerCard extends React.Component {
             case 1: roomState = " 待机"; break;
             case 2: roomState = " 等待服务"; break;
             case 3: roomState = " 服务中"; break;
+            default: roomState = " 待机"; break;
         }
 
         return (

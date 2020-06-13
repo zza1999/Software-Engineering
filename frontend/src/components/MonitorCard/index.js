@@ -114,6 +114,7 @@ class MonitorCard extends React.Component {
                 case 0: speed = "低速"; break;
                 case 1: speed = "中速"; break;
                 case 2: speed = "高速"; break;
+                default: speed = "低速"; break;
             }
             return <Card title={`${room_id} 房间 ${is_start_up ? '服务中' : '待机'}`} key={room_id}>
                 <div>
@@ -133,7 +134,6 @@ class MonitorCard extends React.Component {
     }
 
     render() {
-        const room_id = this.state.room_id;
         return (
             <div className="site-card-wrapper">
                 <div className="button-monitorcard-style" >

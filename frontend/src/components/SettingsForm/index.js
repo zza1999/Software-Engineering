@@ -23,8 +23,8 @@ class SettingsForm extends React.Component {
     formRef = React.createRef();
 
     onFinish = async (values) => {
-        // return this.props.changeStateMode('start');
-        const result = await fetchTool("/customer/set_parameter", values);
+        return this.props.changeStateMode('start');
+        const result = await fetchTool("/administrator/set_parameter", values);
         console.log(result);
         if (result.code === 200) {
             this.props.changeStateMode('start');

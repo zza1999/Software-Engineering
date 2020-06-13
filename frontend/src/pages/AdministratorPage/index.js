@@ -73,6 +73,7 @@ class AdministratorPage extends React.Component {
 			case 'setting': return <SettingsForm changeStateMode={this.changeStateMode} ></SettingsForm>;
 			case 'start': return <Button onClick={this.handleStart} >开始运行</Button>
 			case 'monitor': return <MonitorCard isWorking={this.state.isWorking} handlePowerOff={this.handlePowerOff} ></MonitorCard>
+			default: return <div></div>
 		}
 	}
 
