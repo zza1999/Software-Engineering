@@ -15,7 +15,7 @@ export async function fetchTool(route, form) {
         }
         body += `${i}=${form[i]}`;
     }
-    init['body'] = body;
+    if (body !== "") init['body'] = body;
     console.log(init)
     const res = await fetch(url + route, init);
 

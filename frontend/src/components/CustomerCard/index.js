@@ -135,7 +135,7 @@ class CustomerCard extends React.Component {
     roomRequest = async (cur_temp) => {
         const { room_id, target_temp, state } = this.props;
 
-        if (Math.abs(target_temp - cur_temp) > 1 && state === 1) {
+        if (Math.abs(target_temp - cur_temp) >= 1 && state === 1) {
             const form = { room_id, cur_temp };
 
             const result = await fetchTool("/customer/room_request", form);

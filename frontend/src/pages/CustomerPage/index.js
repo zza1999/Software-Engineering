@@ -6,13 +6,6 @@ import './index.css';
 
 const { Option } = Select;
 var options = [];
-// ■ is_check_in：判断是否入住，bool
-// ■ mode：0为冷模式，1为热模式
-// ■ top_temp：最高温度，float
-// ■ bottom_temp：最低温度，float
-// ■ default_temp：空调刚刚打开，向服务器询问默认的空调温度，float
-// ■ default_speed：房间的初始的风速，0为低速，1为中速，2为高速
-// ■ default_rate：房间初试的费率，float
 
 class CustomerPage extends React.Component {
 	componentWillMount() {

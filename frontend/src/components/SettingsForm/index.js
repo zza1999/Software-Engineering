@@ -1,5 +1,6 @@
 import React from 'react';
-import { Form, InputNumber, Button, Radio, Row, Col } from 'antd'
+import { Form, InputNumber, Button, Radio, Row, Col, notification } from 'antd';
+import { fetchTool } from '../../utils/fetch';
 import './index.css';
 
 const layout = {
@@ -21,23 +22,20 @@ const tailLayout = {
 class SettingsForm extends React.Component {
     formRef = React.createRef();
 
-    onFinish = values => {
-        console.log(values);
-        this.props.changeStateMode('start');
+    onFinish = async (values) => {
+        // return this.props.changeStateMode('start');
+        const result = await fetchTool("/customer/set_parameter", values);
+        console.log(result);
+        if (result.code === 200) {
+            this.props.changeStateMode('start');
+        } else {
+            notification['error']({
+                message: '修改失败',
+                description: '服务失败',
+                duration: 2,
+            });
+        }
     };
-
-    // ○ mode：0为冷模式，1为暖模式
-	// ○ top_temp：最高温度，float
-	// ○ bottom_temp：最低温度，float
-	// ○ default_temp：房间初始的目标温度，float
-	// ○ default_speed：房间的初始的目标风速，0为低速，1为中速，2为高速
-	// ○ high_rate：高速风费率，float
-	// ○ mid_rate：中速风费率，float
-	// ○ low_rate：低速风费率，float
-    // ○ room_num：房间数，int
-    
-	// ○ allow_num：可被调度的房间数，int
-
 
     render() {
 
@@ -47,12 +45,15 @@ class SettingsForm extends React.Component {
                 <Col span={8} style={{ textAlign: 'left' }} >
                     <Form {...layout} ref={this.formRef} name="control-ref" onFinish={this.onFinish}
                         initialValues={{
-                            'bottom_temp': 10,
-                            'top_temp': 35,
                             'mode': '0',
+                            'top_temp': 35,
+                            'bottom_temp': 10,
                             'default_temp': 20,
                             'default_speed': '0',
                             'room_num': 5,
+                            'high_rate': 0.05,
+                            'mid_rate': 0.03,
+                            'low_rate': 0.01,
                             'allow_num': 3,
                         }}
                     >
@@ -92,6 +93,15 @@ class SettingsForm extends React.Component {
                                 <Radio.Button value="1">中速</Radio.Button>
                                 <Radio.Button value="2">高速</Radio.Button>
                             </Radio.Group>
+                        </Form.Item>
+                        <Form.Item name="high_rate" label="高速风费率" rules={[{ required: true }]} >
+                            <InputNumber min={0} max={1} step={0.01} />
+                        </Form.Item>
+                        <Form.Item name="mid_rate" label="中速风费率" rules={[{ required: true }]} >
+                            <InputNumber min={0} max={1} step={0.01} />
+                        </Form.Item>
+                        <Form.Item name="low_rate" label="低速风费率" rules={[{ required: true }]} >
+                            <InputNumber min={0} max={1} step={0.01} />
                         </Form.Item>
                         <Form.Item name="room_num" label="房间数" rules={[{ required: true }]} >
                             <InputNumber min={0} max={100} />
