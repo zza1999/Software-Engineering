@@ -52,7 +52,7 @@ class CustomerPage extends React.Component {
 					cur_rate: default_rate,
 					cur_cost: 0,
 					speed: default_speed,
-					cur_temp: 14,
+					cur_temp: 17,
 					target_temp: parseInt(default_temp)
 				})
 			} else {
