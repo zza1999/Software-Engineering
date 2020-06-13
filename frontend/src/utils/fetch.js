@@ -1,4 +1,5 @@
-const url = "http://39.97.119.227";
+// const url = "http://39.97.119.227";
+const url = "http://p7e9mf.natappfree.cc"
 const init = {
     method: 'POST',
     mode: 'cors',

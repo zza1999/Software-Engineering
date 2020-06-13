@@ -10,7 +10,7 @@ var options = [];
 class CustomerPage extends React.Component {
 	componentWillMount() {
 		options = [];
-		for (let i = 301; i < 310; i++) {
+		for (let i = 301; i < 311; i++) {
 			options.push(<Option key={i}>{i}</Option>);
 		}
 	}
@@ -52,7 +52,7 @@ class CustomerPage extends React.Component {
 					cur_rate: default_rate,
 					cur_cost: 0,
 					speed: default_speed,
-					cur_temp: default_temp,
+					cur_temp: 14,
 					target_temp: parseInt(default_temp)
 				})
 			} else {

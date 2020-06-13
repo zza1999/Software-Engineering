@@ -4,6 +4,7 @@ import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
 import { fetchTool } from '../../utils/fetch';
 import './index.css';
 var isWorking = false;
+var isToTargetTemp = false;
 class CustomerCard extends React.Component {
     state = {
         percent: 40,
@@ -141,7 +142,7 @@ class CustomerCard extends React.Component {
             const result = await fetchTool("/customer/room_request", form);
             console.log(result.data);
             if (result.code === 200) {
-
+                isToTargetTemp = false;
             } else {
 
             }
@@ -151,16 +152,23 @@ class CustomerCard extends React.Component {
     getTempCost = async () => {
         console.log('gettempcost')
         var interval = setInterval(async () => {
-            const { room_id, cur_temp } = this.props;
+            const { room_id, cur_temp, mode, target_temp } = this.props;
             console.log(isWorking)
             if (isWorking === false) {
                 clearInterval(interval);
             }
             const form = { room_id, cur_temp };
+            if (isToTargetTemp) {
+                const temp = mode === 1 ? -0.5 / 60 : 0.5 / 60;
+                form.cur_temp = form.cur_temp + temp;
+            }
 
             const result = await fetchTool("/customer/get_temp_cost", form);
             console.log(result.data);
             if (result.code === 200) {
+                if (target_temp === result.data.cur_temp) {
+                    isToTargetTemp = true;
+                }
                 this.props.changeAttribute({ ...result.data });
                 this.roomRequest(result.data.cur_temp);
             } else {

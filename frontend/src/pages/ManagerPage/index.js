@@ -55,7 +55,7 @@ class ManagerPage extends React.Component {
 			getReportFromLoading: true,
 		});
 
-		const result = await fetchTool("/manager/check_report", { list_room: [305, 306, 307, 308, 309] });
+		const result = await fetchTool("/manager/check_report", { list_room: [305, 306, 307, 308, 309, 310] });
 		if (result.code === 200) {
 			this.setState({ getReportFromLoading: false });
 			const labels = Object.keys(result.data[0]);
