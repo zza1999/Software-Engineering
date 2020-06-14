@@ -19,7 +19,9 @@ class ReceptionPage extends React.Component {
 		room_id: 305,
 		is_check_in: false,
 		check_RDR: false,
-		check_bill: false
+		check_bill: false,
+		RDR: [],
+		bill: {},
 	}
 
 	handleChange = (value) => {
@@ -32,35 +34,35 @@ class ReceptionPage extends React.Component {
 	handleCheckIn = async () => {
 		const result = await fetchTool("/reception/check_in", { room_id: this.state.room_id });
 		if (result.code === 200) {
-			const is_check_in = result.is_check_in;
+			const is_check_in = result.data.is_check_in;
 			if (is_check_in) {
-						Modal.error({
-							centered: true,
-							title: '错误',
-							content: '此房间已被入住',
-						})
+				Modal.error({
+					centered: true,
+					title: '错误',
+					content: '此房间已被入住',
+				})
 
-					} else {
-						Modal.success({
-							centered: true,
-							content: '入住成功',
-						})
-						this.setState(is_check_in = true)
-					}	
-		} else{
+			} else {
+				Modal.success({
+					centered: true,
+					content: '入住成功',
+				})
+				this.setState(is_check_in = true)
+			}
+		} else {
 			notification['error']({
 				message: '入住失败',
 				description: '服务失败',
 				duration: 2,
 			});
 		}
-		
+
 	}
 
 	handleCheckOut = async () => {
 		const result = await fetchTool("/reception/check_out", { room_id: this.state.room_id });
 		if (result.code === 200) {
-			const is_check_in = result.is_check_in;
+			const is_check_in = result.data.is_check_in;
 			if (is_check_in) {
 				Modal.success({
 					centered: true,
@@ -74,52 +76,46 @@ class ReceptionPage extends React.Component {
 					content: '此房间还未入住',
 				})
 			}
-		} else{
+		} else {
 			notification['error']({
 				message: '退房失败',
 				description: '服务失败',
 				duration: 2,
 			});
-		}		
+		}
 	}
 
 	handleCheckRDR = async () => {
 		const result = await fetchTool("/reception/check_RDR", { room_id: this.state.room_id });
 		if (result.code === 200) {
-			const is_check_in = result.is_check_in;
-			if (is_check_in) {
-				this.setState({
-					check_RDR: true
-				})
-			} else {
-				Modal.error({
-					centered: true,
-					title: '错误',
-					content: '未入住无法打印详单',
-				})
-			}
-		} else{
+			this.setState({
+				check_RDR: true,
+				RDR: result.data
+			})
+		} else {
 			notification['error']({
 				message: '打印详单失败',
 				description: '服务失败',
 				duration: 2,
 			});
-		}		
+		}
 	}
 
 	handleRDROff = () => {
 		this.setState({
-			check_RDR: false
+			check_RDR: false,
+			RDR: [],
 		})
 	}
 
 	handleCheckBill = async () => {
-		const result = await fetchTool("/reception/check_Bill", { room_id: this.state.room_id });
+		const result = await fetchTool("/reception/check_bill", { room_id: this.state.room_id });
 		if (result.code === 200) {
-			const is_check_in = result.is_check_in;
+			const is_check_in = result.data.is_check_in;
 			if (is_check_in) {
 				this.setState({
-					check_bill: true
+					check_bill: true,
+					bill: result.data
 				})
 			} else {
 				Modal.error({
@@ -128,7 +124,7 @@ class ReceptionPage extends React.Component {
 					content: '未入住无法打印帐单',
 				})
 			}
-		} else{
+		} else {
 			notification['error']({
 				message: '打印帐单失败',
 				description: '服务失败',
@@ -139,7 +135,8 @@ class ReceptionPage extends React.Component {
 
 	handleBillOff = () => {
 		this.setState({
-			check_bill: false
+			check_bill: false,
+			bill: {},
 		})
 	}
 
@@ -179,12 +176,12 @@ class ReceptionPage extends React.Component {
 						}
 					</Col>
 					<Col span={14} className={"table-style"}>
-					{
-						check_RDR ? <RDRTable {...this.state} handleRDROff={this.handleRDROff} /> : null
-					}
-					{
-						check_bill ? <BillTable {...this.state} handleBillOff={this.handleBillOff} /> : null
-					}
+						{
+							check_RDR ? <RDRTable {...this.state} handleRDROff={this.handleRDROff} /> : null
+						}
+						{
+							check_bill ? <BillTable {...this.state} handleBillOff={this.handleBillOff} /> : null
+						}
 					</Col>
 					<Col span={2}></Col>
 				</Row>

@@ -1,9 +1,9 @@
 import React from 'react';
-import {  Button, Table } from 'antd';
+import { Button, Table } from 'antd';
 import './index.css';
 
 class RDRTable extends React.Component {
-    
+
     handleRDROff = () => {
         console.log('关闭详单');
         this.props.handleRDROff();
@@ -13,16 +13,16 @@ class RDRTable extends React.Component {
 
         const columns = [
             {
-              title: 'Room_id',
-              dataIndex: 'room_id',
+                title: 'Room_id',
+                dataIndex: 'room_id',
             },
             {
-              title: 'Speed',
-              dataIndex: 'speed',
+                title: 'Speed',
+                dataIndex: 'speed',
             },
             {
-              title: 'Rate',
-              dataIndex: 'rate',
+                title: 'Rate',
+                dataIndex: 'rate',
             },
             {
                 title: 'Start_time',
@@ -36,27 +36,16 @@ class RDRTable extends React.Component {
                 title: 'Dur_cost',
                 dataIndex: 'dur_cost',
             }
-          ];
-          const data = [
-            {
-                key: '1',
-                room_id: 101,
-                speed: 1,
-                rate: 1.5,
-                start_time: '2020-04-05 22:22:22',
-                end_time: '2020-04-05 22:22:22',
-                dur_cost: 12.5,
-            },
-            {
-                key: '2',
-                room_id: 101,
-                speed: 2,
-                rate: 2,
-                start_time: '2020-04-05 22:22:22',
-                end_time: '2020-04-05 22:22:22',
-                dur_cost: 15,
-            },
-          ];
+        ];
+        const data = [];
+
+        for (let i in this.props.RDR) {
+            const room = this.props.RDR[i];
+            data.push({
+                key: i,
+                ...room
+            });
+        }
 
         return (
             <div>
@@ -71,18 +60,18 @@ class RDRTable extends React.Component {
 
 
 class BillTable extends React.Component {
-    
+
     handleBillOff = () => {
         console.log('关闭帐单');
         this.props.handleBillOff();
     }
-    
+
     render() {
 
         const columns = [
             {
-              title: 'Room_id',
-              dataIndex: 'room_id',
+                title: 'Room_id',
+                dataIndex: 'room_id',
             },
             {
                 title: 'Check_in_time',
@@ -96,16 +85,13 @@ class BillTable extends React.Component {
                 title: 'Cost',
                 dataIndex: 'cost',
             }
-          ];
-          const data = [
+        ];
+        const data = [
             {
                 key: '1',
-                room_id: 101,
-                check_in_time: '2020-04-05 22:22:22',
-                check_out_time: '2020-04-05 22:22:22',
-                cost: 12.5,
+                ...this.props.bill
             },
-          ];
+        ];
 
         return (
             <div>
@@ -117,4 +103,4 @@ class BillTable extends React.Component {
 
 }
 
-export {RDRTable,BillTable}
+export { RDRTable, BillTable }
