@@ -152,7 +152,7 @@ class CustomerCard extends React.Component {
     getTempCost = async () => {
         console.log('gettempcost')
         var interval = setInterval(async () => {
-            const { room_id, cur_temp, mode } = this.props;
+            const { room_id, cur_temp, mode, state, target_temp } = this.props;
             console.log(isWorking)
             if (isWorking === false) {
                 clearInterval(interval);
@@ -161,12 +161,15 @@ class CustomerCard extends React.Component {
             if (isToTargetTemp) {
                 const temp = mode === 1 ? -0.5 / 60 : 0.5 / 60;
                 form.cur_temp = form.cur_temp + temp;
+                //console.log(form.cur_temp, temp, cur_temp);
             }
 
             const result = await fetchTool("/customer/get_temp_cost", form);
             console.log(result.data);
             if (result.code === 200) {
-                if (cur_temp === result.data.cur_temp) {
+                console.log(cur_temp, result.data.cur_temp)
+                if (Math.abs(target_temp - result.data.cur_temp) < 0.01 && state === 1) {
+                    console.log('回温');
                     isToTargetTemp = true;
                 }
                 this.props.changeAttribute({ ...result.data });
