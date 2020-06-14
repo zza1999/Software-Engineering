@@ -1,6 +1,6 @@
-// const url = "http://39.97.119.227";
-//const url = "http://p7e9mf.natappfree.cc"
-const url = "http://p7e9mf.natapp1.cc/"
+const url = "http://www.huiyuan9.xyz/api";
+
+//const url = "http://tylerdurden.natapp1.cc";
 const init = {
     method: 'POST',
     mode: 'cors',

@@ -83,7 +83,7 @@ class ReceptionPage extends React.Component {
 		}		
 	}
 
-	handleCheckRDR = () => {
+	handleCheckRDR = async () => {
 		const result = await fetchTool("/reception/check_RDR", { room_id: this.state.room_id });
 		if (result.code === 200) {
 			const is_check_in = result.is_check_in;
@@ -113,8 +113,8 @@ class ReceptionPage extends React.Component {
 		})
 	}
 
-	handleCheckBill = () => {//这里！应该要拿到data
-		const result = await fetchTool("/reception/check_RDR", { room_id: this.state.room_id });
+	handleCheckBill = async () => {
+		const result = await fetchTool("/reception/check_Bill", { room_id: this.state.room_id });
 		if (result.code === 200) {
 			const is_check_in = result.is_check_in;
 			if (is_check_in) {
@@ -179,7 +179,7 @@ class ReceptionPage extends React.Component {
 						}
 					</Col>
 					<Col span={14} className={"table-style"}>
-					{//但是画表在Table里面！
+					{
 						check_RDR ? <RDRTable {...this.state} handleRDROff={this.handleRDROff} /> : null
 					}
 					{

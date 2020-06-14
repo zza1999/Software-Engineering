@@ -155,6 +155,7 @@ class CustomerCard extends React.Component {
             const { room_id, cur_temp, mode, state, target_temp } = this.props;
             console.log(isWorking)
             if (isWorking === false) {
+                isToTargetTemp = false;
                 clearInterval(interval);
             }
             const form = { room_id, cur_temp };
@@ -168,7 +169,8 @@ class CustomerCard extends React.Component {
             console.log(result.data);
             if (result.code === 200) {
                 console.log(cur_temp, result.data.cur_temp)
-                if (Math.abs(target_temp - result.data.cur_temp) < 0.01 && state === 1) {
+                //if (Math.abs(target_temp - result.data.cur_temp) < 0.02 && state === 1) 
+                if (state === 3 && result.data.state === 1){
                     console.log('回温');
                     isToTargetTemp = true;
                 }
